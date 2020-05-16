@@ -4,6 +4,11 @@ import (
 	"testing"
 )
 
+type TestData struct {
+	FirstDigit      int
+	NextSimpleDigit int
+}
+
 func TestIsSimple(t *testing.T) {
 	var simpleDigits = []int{2, 3, 5, 7, 11, 13, 17, 19}
 	for _, v := range simpleDigits {
@@ -20,23 +25,48 @@ func TestIsSimple(t *testing.T) {
 }
 
 func TestNextSimple(t *testing.T) {
-	type TestData struct {
-		SimpleDigit     int
-		NextSimpleDigit int
-	}
 	var datasForTests = []TestData{
 		TestData{
-			SimpleDigit:     2,
+			FirstDigit:      2,
 			NextSimpleDigit: 3,
 		},
 		TestData{
-			SimpleDigit:     5,
+			FirstDigit:      5,
 			NextSimpleDigit: 7,
 		},
 	}
 	for _, v := range datasForTests {
-		if NextSimple(v.SimpleDigit) != v.NextSimpleDigit {
-			t.Errorf("For %d next simple digit is %d, but function say %d", v.SimpleDigit, v.NextSimpleDigit, NextSimple(v.SimpleDigit))
+		if NextSimple(v.FirstDigit) != v.NextSimpleDigit {
+			t.Errorf("For %d next simple digit is %d, but function say %d", v.FirstDigit, v.NextSimpleDigit, NextSimple(v.FirstDigit))
+		}
+	}
+}
+
+func TestByTK(t *testing.T) {
+	t.Log("Test IsSimple function on simple digit in TK")
+	SimpleDigit := 11
+	if IsSimple(SimpleDigit) != true {
+		t.Errorf("%d simple, but function say that not simple", SimpleDigit)
+	}
+	t.Log("Test IsSimple function on not simple digit in TK")
+	notSimpleDigit := 14
+	if IsSimple(notSimpleDigit) != false {
+		t.Errorf("%d not simple, but function say that simple", notSimpleDigit)
+	}
+	t.Log("Test NextSimple function on data in TK")
+	var datasForTests = []TestData{
+		TestData{
+			FirstDigit:      11,
+			NextSimpleDigit: 13,
+		},
+		TestData{
+			FirstDigit:      14,
+			NextSimpleDigit: 17,
+		},
+	}
+	for _, v := range datasForTests {
+		if NextSimple(v.FirstDigit) != v.NextSimpleDigit {
+			t.Errorf("For %d next simple digit is %d, but function say %d", v.FirstDigit, v.NextSimpleDigit, NextSimple(v.FirstDigit))
 		}
 	}
 }
