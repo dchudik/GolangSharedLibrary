@@ -47,6 +47,28 @@ ok      dll     0.003s
 ```console
 [dima@localhost SUAI]$ python test.py
 ```
+<details>
+<summary>Пример вывода:</summary>
+<p>
+
+```console
+[dima@localhost SUAI]$ python test.py
+For integer 11
+Is simple: 
+True
+Next simple: 
+13
+For integer 14
+Is simple: 
+False
+Next simple: 
+17
+[dima@localhost SUAI]$
+```
+
+</p>
+</details>
+
 **Важно**
 В начале надо убедиться что *Python* по умолчанию использует версию 3 и больше
 Для проверки надо выполнить команду:
